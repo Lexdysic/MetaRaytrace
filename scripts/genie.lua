@@ -18,6 +18,7 @@ solution "MetaRayTrace"
 
         configuration { "vs*" }
             buildoptions { "/bigobj" }
+            defines { "_CRT_SECURE_NO_WARNINGS" }
 
         configuration { "linux" }
             targetdir "../.build/bin/linux"
