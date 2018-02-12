@@ -12,10 +12,10 @@ void find_replace(std::string & str, const std::string & s, const std::string & 
 
 //===========================================================================
 int main () {
-    typedef Renderer<50, 50> MyRenderer;
+    typedef Renderer<100, 100> MyRenderer;
 
 
-    std::string filename = "Image - " __DATE__ " - " __TIME__ ".ppm";
+    std::string filename = "Image - " __DATE__ " - " __TIME__ ".tga";
     find_replace(filename, ":", "_");
 
     MyRenderer::Save(filename.c_str());

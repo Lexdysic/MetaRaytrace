@@ -148,12 +148,9 @@ public:
 template <int x, int y, int width, int height>
 inline void Render (FILE * pFile) {
     typedef Raytrace<x, y, width, height>::result color;
-    fprintf(pFile, "%d %d %d ", 
-        Clamp<color::r, 0, 255>::result,
-        Clamp<color::g, 0, 255>::result,
-        Clamp<color::b, 0, 255>::result
-    );
-    // Note: different ppm renderers seem to have different component orders!
+    putc(Clamp<color::b, 0, 255>::result, pFile);
+    putc(Clamp<color::g, 0, 255>::result, pFile);
+    putc(Clamp<color::r, 0, 255>::result, pFile);
 }
 
 
@@ -220,7 +217,20 @@ struct Renderer {
             return;
         }
 
-        fprintf(pFile, "P3\n%d %d\n%d\n", width, height, 255);
+        putc(0, pFile);
+        putc(0, pFile);
+        putc(2, pFile);                         /* uncompressed RGB */
+        putc(0, pFile); putc(0, pFile);
+        putc(0, pFile); putc(0, pFile);
+        putc(0, pFile);
+        putc(0, pFile); putc(0, pFile);           /* X origin */
+        putc(0, pFile); putc(0, pFile);           /* y origin */
+        putc((width & 0x00FF), pFile);
+        putc((width & 0xFF00) / 256, pFile);
+        putc((height & 0x00FF), pFile);
+        putc((height & 0xFF00) / 256, pFile);
+        putc(24, pFile);                        /* 24 bit bitmap */
+        putc(0, pFile);
 
         Loop<0, 0, width, height>::Exec(pFile);
 
