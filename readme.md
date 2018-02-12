@@ -57,11 +57,11 @@ Takes the intersection information to compute the diffuse color contribution. It
 
 It turns out that in the case of compile-time programs, unoptimized builds are far better. The compilation process will generate potentially millions of types that the compiler has to manage. Optimized builds end up using more memory, presumably because it is building up information needed for removing redundant code and generating as few instructions as possible. This is actually counter to what we want to acheive with compilation.
 
-The visual studio project contains a `CompileTimeConfig` configureation used to ensure the build is unoptimised.
+The projects contains a `Meta` configuration used to ensure the build is unoptimised.
 
 
 # Extracting the Image
 
 The compiler itself has very few mechanisms for outputting- one being the `#pragma message` and the other being an error message. I orignally considered force generating a compilation error at the end of the rendering process and simply stating the structure of this output to be a new image file format. This would mean creatign an image transformation program to convert from my new file type to a well established one.
 
-Instead I opted for simplying having the runtime just oytput the image as its only task. No work for computing the image was being done at runtime, simply taking a series of constants and writing them to a file by calling `fprintf()` to form a [.ppm](https://en.wikipedia.org/wiki/Netpbm_format) file.
+Instead I opted for simplying having the runtime just oytput the image as its only task. No work for computing the image was being done at runtime, simply taking a series of constants and writing them to a file by calling `fprintf()` to form a .tga file.
