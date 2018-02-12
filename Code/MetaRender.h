@@ -88,6 +88,7 @@ typedef Camera<
 
 typedef Vector<10, 10, 10> MyLight;
 const int MyLightLen = VecLen<MyLight>::result; // Preprocess this to save some time
+const int AmbientColor = 96;
 
 
 //=============================================================================
@@ -104,7 +105,7 @@ private:
     static const int den         = normalLen * MyLightLen;
     typedef typename ColScale<
         typename object::color, 
-        diffuse + 192, 
+        diffuse + AmbientColor, 
         Max<den, 1>::result
     >::result litColor;
 

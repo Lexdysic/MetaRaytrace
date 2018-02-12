@@ -10,9 +10,9 @@ void find_replace(std::string & str, const std::string & s, const std::string & 
     }
 }
 
-//===========================================================================
+//=====================================s======================================
 int main () {
-    typedef Renderer<100, 100> MyRenderer;
+    typedef Renderer<200, 200> MyRenderer;
 
 
     std::string filename = "Image - " __DATE__ " - " __TIME__ ".tga";
