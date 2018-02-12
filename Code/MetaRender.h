@@ -1,4 +1,7 @@
+#pragma once
+
 #include <cstdio>
+#include "MetaGeometry.h"
 
 //=============================================================================
 // Camera
@@ -138,7 +141,7 @@ private:
         typename query::normal
     >::result color;
 public:
-    typedef typename color result;
+    typedef color result;
 };
 
 
@@ -147,7 +150,7 @@ public:
 //=============================================================================
 template <int x, int y, int width, int height>
 inline void Render (FILE * pFile) {
-    typedef Raytrace<x, y, width, height>::result color;
+    typedef typename Raytrace<x, y, width, height>::result color;
     putc(Clamp<color::b, 0, 255>::result, pFile);
     putc(Clamp<color::g, 0, 255>::result, pFile);
     putc(Clamp<color::r, 0, 255>::result, pFile);
@@ -210,9 +213,8 @@ struct Loop<0, height, width, height> {
 template <int width, int height>
 struct Renderer {
     static void Save (const char * filename) {
-        FILE * pFile;
-        int rv = fopen_s(&pFile, filename, "w");
-        if (rv != 0) {
+        FILE * pFile = fopen(filename, "w");
+        if (pFile == 0) {
             printf("Bad file: %s", filename);
             return;
         }

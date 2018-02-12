@@ -1,3 +1,5 @@
+#pragma once
+
 #include "MetaBasic.h"
 #include "MetaColor.h"
 #include "MetaVector.h"
