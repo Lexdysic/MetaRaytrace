@@ -1,16 +1,14 @@
 solution "MetaRayTrace"
     configurations { "Meta" }
-    location "../.build/projects"
+    location("../.build/projects/" .. _ACTION)
+    platforms { "x64" }
     debugdir ".."
 
     project "MetaRayTrace"
         targetname "MetaRaytrace"
         language "C++"
         kind "ConsoleApp"
-
-        flags {
-            "StaticRuntime"
-        }
+        flags { "StaticRuntime" }
 
         files {
             "../Code/**.h",
@@ -18,11 +16,11 @@ solution "MetaRayTrace"
             "../scripts/**.lua",
         }
 
-        configuration { "vs2015" }
+        configuration { "vs*" }
             buildoptions { "/bigobj" }
 
-        configuration "linux"
+        configuration { "linux" }
             targetdir "../.build/bin/linux"
-
-        configuration "windows"
+        configuration { "windows" }
             targetdir "../.build/bin/windows"
+        configuration {}
