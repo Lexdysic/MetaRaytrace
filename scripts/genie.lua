@@ -8,7 +8,15 @@ solution "MetaRayTrace"
         targetname "MetaRaytrace"
         language "C++"
         kind "ConsoleApp"
-        flags { "StaticRuntime" }
+        flags {
+            "StaticRuntime",
+            "Optimize",
+            "NoRTTI",
+            "NoExceptions",
+            "NoEditAndContinue",
+            "NoIncrementalLink",
+            "NoFramePointer"
+        }
 
         files {
             "../Code/**.h",
