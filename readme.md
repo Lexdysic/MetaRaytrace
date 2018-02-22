@@ -27,7 +27,7 @@ The point of these types is generate `x` and `y` coordinate information once for
 
 ### Renderer
 
-The `Renderer` type takes two arguments, the `Width` and `Height of the rendered scene in pixels. The job opf the Renderer is to start the recursive type generation with the `Loop` type. 
+The `Renderer` type takes two arguments, the `Width` and `Height` of the rendered scene in pixels. The job of the Renderer is to start the recursive type generation with the `Loop` type. 
 
 ### Loop
 
